@@ -18,7 +18,7 @@ jobs:
     - name: Install packages
       run: export HOMEBREW_NO_INSTALL_CLEANUP=1 ; brew install gcc autoconf automake libtool binutils bison flex ;
     - name: test paths
-      run: which strip ; ls -lah /usr/bin/strip ; ls -lah /usr/local/opt/binutils ;
+      run: which strip ; ls -lah /usr/bin/strip ; ls -lah /usr/local/opt/binutils/bin/* ;
     - name: autoconfigure
       run: autoreconf -vfi 
     - name: configure
@@ -28,5 +28,5 @@ jobs:
     - name: look
       run: ls -lah
     - name: strip
-      run: strip tst1 ; ls -lah ; strip -S -x tst1 ; ls -lah      
+      run: strip tst1 ; ls -lah ; strip -S -x tst1 ; ls -lah  ; /usr/local/opt/binutils/bin/strip tst1 ; ls -lah  ; 
       
