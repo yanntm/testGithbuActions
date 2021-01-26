@@ -28,5 +28,5 @@ jobs:
     - name: look
       run: ls -lah
     - name: strip
-      run: strip tst1 ; ls -lah ; strip -S -x tst1 ; ls -lah  ; /usr/local/opt/binutils/bin/strip -s tst1 ; ls -lah  ; 
+      run: nm -an tst1 ; strip tst1 ; ls -lah ; strip -S -x tst1 ; ls -lah  ; /usr/local/opt/binutils/bin/strip -s tst1 ; ls -lah  ; nm -an tst1 
       
