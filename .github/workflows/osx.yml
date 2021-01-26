@@ -1,0 +1,23 @@
+name: Test Strip
+
+on:
+  push:
+    branches: [ master ]
+ 
+
+jobs:
+  build:
+    runs-on: macos-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    - name: test paths
+      run: which strip ; ls -lah /usr/bin/strip
+    - name: Install packages
+      run: brew install gcc autoconf automake libtool binutils bison flex ;
+    - name: test paths
+      run: which strip ; ls -lah /usr/bin/strip ; ls -lah /usr/local/opt/
+    - name: invoke
+      run: strip --help 
+      
+      
