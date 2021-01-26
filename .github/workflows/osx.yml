@@ -16,9 +16,11 @@ jobs:
     - name: test paths
       run: which strip ; ls -lah /usr/bin/strip
     - name: Install packages
-      run: brew install gcc autoconf automake libtool binutils bison flex ;
+      run: export HOMEBREW_NO_INSTALL_CLEANUP=1 ; brew install gcc autoconf automake libtool binutils bison flex ;
     - name: test paths
-      run: which strip ; ls -lah /usr/bin/strip ; ls -lah /usr/local/opt/
+      run: which strip ; ls -lah /usr/bin/strip ; ls -lah /usr/local/opt/binutils ;
+    - name: autoconfigure
+      run: autoreconf -vfi 
     - name: configure
       run: ./configure YACC='/usr/local/opt/bison/bin/bison -y' AR='gcc-ar-10' NM='gcc-nm-10' RANLIB='gcc-ranlib-10' CXX='g++-10' CC='gcc-10' --prefix=$PWD/usr/local/  --with-libexpat=$PWD/usr/local/ --with-libddd=$PWD/usr/local/ --with-gmp=$PWD/usr/local/ --with-antlrc=$PWD/usr/local/   --with-antlrjar=$PWD/usr/local/lib/antlr-3.4-complete.jar CPPFLAGS="-I$(pwd)/usr/local/include -DNDEBUG" LDFLAGS="-L$(pwd)/usr/local/lib" || cat config.log ; 
     - name: make 
