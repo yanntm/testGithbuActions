@@ -11,6 +11,8 @@ jobs:
     
     steps:
     - uses: actions/checkout@v2
+    - name: Grab libDDD artefacts
+      run: wget --progress=dot:mega https://github.com/lip6/libDDD/raw/${{ runner.os }}/${{ runner.os }}.tgz ; tar xzf ${{ runner.os }}.tgz ;
     - name: test paths
       run: which strip ; ls -lah /usr/bin/strip
     - name: Install packages
