@@ -22,7 +22,7 @@ jobs:
     - name: autoconfigure
       run: autoreconf -vfi 
     - name: configure
-      run: ./configure --enable-nolto YACC='/usr/local/opt/bison/bin/bison -y' AR='gcc-ar-10' NM='gcc-nm-10' RANLIB='gcc-ranlib-10' CXX='g++-10' CC='gcc-10' --prefix=$PWD/usr/local/  --with-libexpat=$PWD/usr/local/ --with-libddd=$PWD/usr/local/ --with-gmp=$PWD/usr/local/ --with-antlrc=$PWD/usr/local/   --with-antlrjar=$PWD/usr/local/lib/antlr-3.4-complete.jar CPPFLAGS="-I$(pwd)/usr/local/include -DNDEBUG" LDFLAGS="-L$(pwd)/usr/local/lib" || cat config.log ; 
+      run: ./configure YACC='/usr/local/opt/bison/bin/bison -y' AR='gcc-ar-10' NM='gcc-nm-10' RANLIB='gcc-ranlib-10' CXX='g++-10' CC='gcc-10' --prefix=$PWD/usr/local/  --with-libexpat=$PWD/usr/local/ --with-libddd=$PWD/usr/local/ --with-gmp=$PWD/usr/local/ --with-antlrc=$PWD/usr/local/   --with-antlrjar=$PWD/usr/local/lib/antlr-3.4-complete.jar CPPFLAGS="-I$(pwd)/usr/local/include -DNDEBUG" LDFLAGS="-L$(pwd)/usr/local/lib" || cat config.log ; 
     - name: make 
       run: make -j 4
     - name: look
