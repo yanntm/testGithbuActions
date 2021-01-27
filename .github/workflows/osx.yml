@@ -26,7 +26,7 @@ jobs:
     - name: make 
       run: make -j 4
     - name: look
-      run: ls -lah ; lipo -info tst1
+      run: ls -lah ; lipo -info tst1 ; otool -L tst1
     - name: strip
       run: nm -an tst1 | head -5 ; strip tst1 ; ls -lah ; strip -S -x tst1 ; ls -lah  ; /usr/local/opt/binutils/bin/strip -s tst1 ; ls -lah  ; nm -an tst1 
       
