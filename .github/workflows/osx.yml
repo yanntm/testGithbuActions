@@ -27,6 +27,8 @@ jobs:
       run: make -j 4
     - name: look
       run: ls -lah ; lipo -info tst1 ; otool -L tst1
+    - name: grab bloaty
+      run: wget https://github.com/google/bloaty/releases/download/v1.1/bloaty-1.1.tar.bz2 ; tar xvjf bloaty*.bz2 ; cd bloaty-1.1 ; cmake . ; make -j6 
     - name: strip
-      run: nm -an tst1 | head -5 ; strip tst1 ; ls -lah ; strip -S -x tst1 ; ls -lah  ; /usr/local/opt/binutils/bin/strip -s tst1 ; ls -lah  ; nm -an tst1 
+      run: nm -an tst1 | head -5 ; bloaty-1.1/bloaty tst1 ; strip tst1 ; ls -lah ; strip -S -x tst1 ; ls -lah  ; /usr/local/opt/binutils/bin/strip -s tst1 ; ls -lah  ; nm -an tst1 ; bloaty-1.1/bloaty tst1 
       
